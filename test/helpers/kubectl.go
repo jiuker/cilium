@@ -2912,7 +2912,10 @@ func (kub *Kubectl) CiliumExecContext(ctx context.Context, pod string, cmd strin
 	// https://github.com/openshift/origin/issues/16246
 	for i := 0; i < limitTimes; i++ {
 		res = execute()
-		if res.GetExitCode() != 126 {
+		switch res.GetExitCode() {
+		case 126:
+			// Retry.
+		default:
 			break
 		}
 		time.Sleep(200 * time.Millisecond)

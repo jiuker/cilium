@@ -140,6 +140,7 @@ func newObjectCache(c datapath.ConfigWriter, nodeCfg *datapath.LocalNodeConfigur
 		})
 
 	return oc
+	1
 }
 
 // NewObjectCache creates a new cache for datapath objects, basing the hash
